@@ -1,1 +1,885 @@
+/* =========================================================
+   VALHEIM 1.0 — ESTILO PRINCIPAL
+   Compatível com PC, tablet e celular
+   ========================================================= */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --verde-runa: #b9df83;
+    --verde-claro: #d9f3a7;
+    --verde-escuro: #304c2c;
+    --floresta: #07130d;
+    --floresta-2: #0d2116;
+    --pedra: #151c18;
+    --texto: #d9e6c1;
+}
+
+
+/* =========================================================
+   CORPO
+   ========================================================= */
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow-x: hidden;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: var(--texto);
+
+    background:
+
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(84, 132, 63, .28),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(42, 91, 50, .20),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            rgba(2, 9, 6, .45),
+            rgba(1, 6, 4, .94)
+        ),
+
+        url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2400&q=85")
+        center / cover fixed;
+
+}
+
+
+/* =========================================================
+   NEBLINA
+   ========================================================= */
+
+.neblina {
+
+    position: fixed;
+
+    inset: -30%;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    opacity: .32;
+
+    background:
+
+        radial-gradient(
+            ellipse,
+            rgba(170, 205, 160, .12),
+            transparent 55%
+        );
+
+    filter: blur(45px);
+
+    animation:
+        moverNeblina 18s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes moverNeblina {
+
+    from {
+        transform: translateX(-5%) translateY(2%);
+    }
+
+    to {
+        transform: translateX(7%) translateY(-3%);
+    }
+
+}
+
+
+/* =========================================================
+   POSTER
+   ========================================================= */
+
+.poster {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(920px, 94vw);
+
+    min-height: 680px;
+
+    padding: clamp(30px, 6vw, 65px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            rgba(4, 14, 9, .78),
+            rgba(3, 10, 7, .88)
+        );
+
+    border:
+
+        1px solid
+        rgba(174, 211, 124, .35);
+
+    box-shadow:
+
+        0 30px 100px
+        rgba(0, 0, 0, .8),
+
+        inset 0 0 100px
+        rgba(61, 111, 57, .12);
+
+    backdrop-filter: blur(5px);
+
+}
+
+
+/* borda luminosa */
+
+.poster::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border:
+
+        1px solid
+        rgba(160, 202, 112, .18);
+
+    pointer-events: none;
+
+}
+
+
+/* brilho passando pelo poster */
+
+.poster::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180%;
+
+    height: 2px;
+
+    left: -40%;
+
+    top: 50%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(175, 222, 125, .18),
+            transparent
+        );
+
+    animation:
+
+        brilhoPassando 7s linear infinite;
+
+    pointer-events: none;
+
+}
+
+
+@keyframes brilhoPassando {
+
+    from {
+        transform: translateY(-400px) rotate(-12deg);
+    }
+
+    to {
+        transform: translateY(400px) rotate(-12deg);
+    }
+
+}
+
+
+/* =========================================================
+   RUNAS
+   ========================================================= */
+
+.runas {
+
+    font-size: clamp(12px, 2vw, 18px);
+
+    letter-spacing: .65em;
+
+    color: var(--verde-runa);
+
+    opacity: .8;
+
+    text-shadow:
+
+        0 0 5px rgba(157, 218, 106, .5),
+
+        0 0 15px rgba(117, 190, 79, .35),
+
+        0 0 30px rgba(96, 170, 65, .25);
+
+    animation:
+
+        brilhoRunas 3s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes brilhoRunas {
+
+    from {
+
+        opacity: .45;
+
+        text-shadow:
+
+            0 0 4px
+            rgba(157, 218, 106, .4);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        text-shadow:
+
+            0 0 8px
+            rgba(175, 235, 120, .9),
+
+            0 0 25px
+            rgba(120, 200, 80, .6),
+
+            0 0 50px
+            rgba(90, 170, 60, .35);
+
+    }
+
+}
+
+
+/* =========================================================
+   TITULO
+   ========================================================= */
+
+h1 {
+
+    margin-top: 15px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(50px, 11vw, 110px);
+
+    line-height: .9;
+
+    letter-spacing: .12em;
+
+    color: #dceabf;
+
+    text-shadow:
+
+        0 2px 0 #26351f,
+
+        0 0 10px
+        rgba(166, 220, 116, .55),
+
+        0 0 35px
+        rgba(109, 176, 74, .35);
+
+    animation:
+
+        tituloRespira 4s ease-in-out infinite;
+
+}
+
+
+@keyframes tituloRespira {
+
+    0%, 100% {
+
+        text-shadow:
+
+            0 2px 0 #26351f,
+
+            0 0 10px
+            rgba(166, 220, 116, .45);
+
+    }
+
+    50% {
+
+        text-shadow:
+
+            0 2px 0 #26351f,
+
+            0 0 20px
+            rgba(166, 220, 116, .8),
+
+            0 0 45px
+            rgba(109, 176, 74, .45);
+
+    }
+
+}
+
+
+/* =========================================================
+   SUBTITULO
+   ========================================================= */
+
+.subtitulo {
+
+    margin-top: 14px;
+
+    font-size:
+        clamp(12px, 2vw, 17px);
+
+    letter-spacing: .45em;
+
+    color: #9eb681;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   DIVISORES
+   ========================================================= */
+
+.divisor {
+
+    margin: 25px 0;
+
+    color: #8dad6d;
+
+    letter-spacing: .35em;
+
+    opacity: .8;
+
+}
+
+
+.inferior {
+
+    margin-top: 25px;
+
+}
+
+
+/* =========================================================
+   CONTADOR
+   ========================================================= */
+
+.contador {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: clamp(7px, 2vw, 25px);
+
+    width: 100%;
+
+}
+
+
+.bloco {
+
+    min-width: clamp(65px, 13vw, 150px);
+
+    padding:
+
+        clamp(12px, 2vw, 22px)
+        8px;
+
+    background:
+
+        linear-gradient(
+            rgba(8, 22, 13, .7),
+            rgba(2, 10, 7, .85)
+        );
+
+    border:
+
+        1px solid
+        rgba(161, 204, 110, .25);
+
+    box-shadow:
+
+        inset 0 0 30px
+        rgba(82, 145, 63, .08);
+
+    transition:
+
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+
+}
+
+
+.bloco:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(180, 230, 125, .65);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(110, 180, 70, .18),
+
+        inset 0 0 25px
+        rgba(82, 145, 63, .12);
+
+}
+
+
+.numero {
+
+    display: block;
+
+    font-family:
+        "Trebuchet MS",
+        Arial,
+        sans-serif;
+
+    font-weight: 800;
+
+    font-size:
+        clamp(34px, 7vw, 72px);
+
+    line-height: 1;
+
+    color: var(--verde-claro);
+
+    text-shadow:
+
+        0 0 10px
+        rgba(171, 229, 113, .55),
+
+        0 0 30px
+        rgba(100, 180, 70, .3);
+
+}
+
+
+.legenda {
+
+    display: block;
+
+    margin-top: 10px;
+
+    font-size:
+        clamp(8px, 1.5vw, 12px);
+
+    letter-spacing: .22em;
+
+    color: #91a879;
+
+}
+
+
+.separador {
+
+    font-size:
+        clamp(25px, 5vw, 50px);
+
+    color: #70875e;
+
+    animation:
+
+        piscar 1s infinite;
+
+}
+
+
+@keyframes piscar {
+
+    0%, 45% {
+        opacity: 1;
+    }
+
+    50%, 100% {
+        opacity: .25;
+    }
+
+}
+
+
+/* =========================================================
+   VERSÃO 1.0
+   ========================================================= */
+
+.versao {
+
+    margin-top: 25px;
+
+    font-size:
+        clamp(25px, 5vw, 45px);
+
+    letter-spacing: .25em;
+
+    color: #d7e9b5;
+
+    text-shadow:
+
+        0 0 15px
+        rgba(160, 220, 100, .45);
+
+}
+
+
+.versao span {
+
+    color: #718b60;
+
+    font-size: .55em;
+
+}
+
+
+/* =========================================================
+   DATA
+   ========================================================= */
+
+.data {
+
+    margin-top: 8px;
+
+    padding: 9px 20px;
+
+    border:
+
+        1px solid
+        rgba(155, 196, 110, .3);
+
+    background:
+
+        rgba(0, 0, 0, .22);
+
+    letter-spacing: .25em;
+
+    color: #b8cc99;
+
+}
+
+
+/* =========================================================
+   MENSAGEM
+   ========================================================= */
+
+.mensagem {
+
+    margin-top: 25px;
+
+    font-size:
+        clamp(13px, 2vw, 18px);
+
+    letter-spacing: .3em;
+
+    color: #a8c18b;
+
+}
+
+
+/* =========================================================
+   FRASE
+   ========================================================= */
+
+.frase {
+
+    margin-top: 5px;
+
+    font-size:
+        clamp(11px, 1.8vw, 15px);
+
+    font-style: italic;
+
+    color: #7f956d;
+
+}
+
+
+/* =========================================================
+   BOTÃO
+   ========================================================= */
+
+.botao {
+
+    margin-top: 25px;
+
+    padding:
+
+        12px
+        22px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    letter-spacing: .16em;
+
+    color: #d6e8b6;
+
+    background:
+
+        rgba(50, 86, 42, .25);
+
+    border:
+
+        1px solid
+        rgba(158, 203, 112, .45);
+
+    transition:
+
+        all .3s ease;
+
+}
+
+
+.botao:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+
+        rgba(82, 132, 62, .35);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(116, 188, 75, .25);
+
+}
+
+
+.botao:active {
+
+    transform:
+        scale(.96);
+
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status {
+
+    min-height: 20px;
+
+    margin-top: 10px;
+
+    font-size: 12px;
+
+    color: #9db783;
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — CELULAR
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+
+        padding: 12px;
+
+        background-attachment: scroll;
+
+    }
+
+
+    .poster {
+
+        width: 100%;
+
+        min-height: 650px;
+
+        padding:
+
+            40px 15px;
+
+    }
+
+
+    .contador {
+
+        gap: 4px;
+
+    }
+
+
+    .bloco {
+
+        min-width: 0;
+
+        width: 22vw;
+
+        padding: 14px 4px;
+
+    }
+
+
+    .numero {
+
+        font-size:
+            clamp(27px, 9vw, 45px);
+
+    }
+
+
+    .legenda {
+
+        font-size: 7px;
+
+        letter-spacing: .12em;
+
+    }
+
+
+    .separador {
+
+        font-size: 25px;
+
+    }
+
+
+    .subtitulo {
+
+        letter-spacing: .25em;
+
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR PEQUENO
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .poster {
+
+        min-height: 600px;
+
+        padding: 35px 10px;
+
+    }
+
+
+    .runas {
+
+        letter-spacing: .35em;
+
+    }
+
+
+    .contador {
+
+        gap: 2px;
+
+    }
+
+
+    .bloco {
+
+        width: 20vw;
+
+    }
+
+
+    .numero {
+
+        font-size: 25px;
+
+    }
+
+
+    .legenda {
+
+        font-size: 6px;
+
+    }
+
+
+    .separador {
+
+        font-size: 20px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUZIR ANIMAÇÕES PARA QUEM PREFERE MENOS MOVIMENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+    }
+
+}
