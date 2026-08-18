@@ -14,12 +14,16 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow: hidden;
+    /* CORREÇÃO 1: overflow-x esconde a rolagem lateral da neve, mas permite rolar a página para baixo se a tela for pequena */
+    overflow-x: hidden; 
+    /* CORREÇÃO 2: Garante um respiro no topo e na base para a caixa não grudar nas bordas da janela */
+    padding: 40px 20px; 
     position: relative;
 }
 
 .neve {
-    position: absolute;
+    /* CORREÇÃO 3: position fixed garante que a neve não desapareça caso o usuário role a página para baixo */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100vw;
@@ -33,6 +37,8 @@ body {
     animation: nevasca 10s linear infinite;
     opacity: 0.4;
     z-index: 1;
+    /* Impede que a neve fique clicável por cima do botão */
+    pointer-events: none; 
 }
 
 @keyframes nevasca {
@@ -42,6 +48,9 @@ body {
 
 .poster {
     z-index: 2;
+    /* CORREÇÃO 4: Adiciona limites de largura fluida para se adaptar automaticamente ao celular e ao PC */
+    width: 100%;
+    max-width: 700px; 
     background: rgba(0, 0, 0, 0.75);
     padding: 40px 60px;
     border: 2px solid #3a4b5c;
@@ -83,6 +92,8 @@ h1 {
     align-items: center;
     gap: 15px;
     margin: 30px 0;
+    /* Força os blocos a pularem para a linha de baixo se a tela for muito fina, evitando "espremer" o texto */
+    flex-wrap: wrap; 
 }
 
 .bloco {
