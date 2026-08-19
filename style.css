@@ -14,15 +14,12 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* CORREÇÃO 1: overflow-x esconde a rolagem lateral da neve, mas permite rolar a página para baixo se a tela for pequena */
     overflow-x: hidden; 
-    /* CORREÇÃO 2: Garante um respiro no topo e na base para a caixa não grudar nas bordas da janela */
     padding: 40px 20px; 
     position: relative;
 }
 
 .neve {
-    /* CORREÇÃO 3: position fixed garante que a neve não desapareça caso o usuário role a página para baixo */
     position: fixed; 
     top: 0;
     left: 0;
@@ -37,7 +34,6 @@ body {
     animation: nevasca 10s linear infinite;
     opacity: 0.4;
     z-index: 1;
-    /* Impede que a neve fique clicável por cima do botão */
     pointer-events: none; 
 }
 
@@ -48,7 +44,6 @@ body {
 
 .poster {
     z-index: 2;
-    /* CORREÇÃO 4: Adiciona limites de largura fluida para se adaptar automaticamente ao celular e ao PC */
     width: 100%;
     max-width: 700px; 
     background: rgba(0, 0, 0, 0.75);
@@ -92,7 +87,6 @@ h1 {
     align-items: center;
     gap: 15px;
     margin: 30px 0;
-    /* Força os blocos a pularem para a linha de baixo se a tela for muito fina, evitando "espremer" o texto */
     flex-wrap: wrap; 
 }
 
@@ -148,4 +142,54 @@ h1 {
     margin-top: 15px;
     font-size: 0.9rem;
     color: #ffaa00;
+}
+
+@media (max-width: 600px) {
+    .poster {
+        padding: 30px 10px;
+    }
+
+    .runas {
+        font-size: 1.2rem;
+        letter-spacing: 6px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+    }
+
+    .subtitulo {
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    .contador {
+        gap: 3px;
+        flex-wrap: nowrap;
+    }
+
+    .bloco {
+        min-width: 60px;
+        padding: 10px 2px;
+    }
+
+    .numero {
+        font-size: 1.6rem;
+    }
+
+    .legenda {
+        font-size: 0.6rem;
+    }
+
+    .separador {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .botao {
+        font-size: 0.85rem;
+        padding: 12px 10px;
+        width: 100%;
+    }
 }
