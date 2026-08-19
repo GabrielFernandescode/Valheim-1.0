@@ -56,9 +56,41 @@
         
         <div class="divisor inferior">✦ ───────── ✦</div>
         
-        <button id="botao" class="botao">⚔ OUÇA O CHAMADO DE ODIN... </button>
+        <div class="botoes-container">
+            <button id="botao" class="botao">⚔ OUÇA O CHAMADO...</button>
+            <button id="btn-players" class="botao">👥 PLAYERS</button>
+        </div>
         <p id="status" class="status"></p>
     </main>
+
+    <div id="modal-players" class="modal-oculto">
+        <div class="modal-conteudo">
+            <span id="fechar-modal" class="fechar">&times;</span>
+            <h2>Viking Roster</h2>
+            <table class="tabela-players">
+                <thead>
+                    <tr>
+                        <th>Nick</th>
+                        <th>Função na Base</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@SeuNickAqui</td>
+                        <td>Host e Infraestrutura</td>
+                    </tr>
+                    <tr>
+                        <td>@Amigo1</td>
+                        <td>Coleta de Madeira e Pedra</td>
+                    </tr>
+                    <tr>
+                        <td>@Amigo2</td>
+                        <td>Forja e Alimentação</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
