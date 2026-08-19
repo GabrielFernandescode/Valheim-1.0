@@ -41,3 +41,24 @@ botaoAmbiente.addEventListener("click", function() {
         tocando = false;
     }
 });
+
+const btnPlayers = document.getElementById('btn-players');
+const modalPlayers = document.getElementById('modal-players');
+const btnFecharModal = document.getElementById('fechar-modal');
+
+btnPlayers.addEventListener('click', () => {
+    modalPlayers.classList.remove('modal-oculto');
+    modalPlayers.classList.add('modal-visivel');
+});
+
+btnFecharModal.addEventListener('click', () => {
+    modalPlayers.classList.remove('modal-visivel');
+    modalPlayers.classList.add('modal-oculto');
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target === modalPlayers) {
+        modalPlayers.classList.remove('modal-visivel');
+        modalPlayers.classList.add('modal-oculto');
+    }
+});
