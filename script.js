@@ -126,6 +126,9 @@ btnEntrar.addEventListener('click', async () => {
     
     try { audioPortal.play(); } catch(e) {}
     
+    telaPortal.style.background = 'transparent';
+    telaPortal.style.pointerEvents = 'none';
+    
     anelPortal.classList.add('portal-fogo');
 
     carregarPlayers();
