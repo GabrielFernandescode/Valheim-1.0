@@ -33,13 +33,135 @@ body {
     background-size: 600px 600px;
     animation: nevasca 10s linear infinite;
     opacity: 0.4;
-    z-index: 1;
+    z-index: 10001;
     pointer-events: none; 
 }
 
 @keyframes nevasca {
     0% { transform: translateY(0); }
     100% { transform: translateY(600px); }
+}
+
+.tela-portal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #02040a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 1.5s ease, visibility 1.5s ease;
+}
+
+.portal-oculto {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.portal-anel {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: 
+        radial-gradient(circle at center, 
+            #0a050d 10%, 
+            #3d1400 25%, 
+            #a63d00 45%, 
+            #e65c00 65%, 
+            #ff9900 85%, 
+            transparent 100%
+        ),
+        repeating-conic-gradient(
+            from 0deg, 
+            transparent 0deg, 
+            rgba(0, 0, 0, 0.3) 10deg, 
+            transparent 20deg
+        );
+    background-blend-mode: multiply;
+    box-shadow: 0 0 60px #ff6600, inset 0 0 40px #0a050d;
+    filter: blur(5px) contrast(1.4);
+    opacity: 0;
+    visibility: hidden;
+    border: none;
+}
+
+@keyframes portalGlow {
+    0% { box-shadow: 0 0 40px #ff6600, inset 0 0 40px #0a050d; filter: blur(5px) contrast(1.4); }
+    100% { box-shadow: 0 0 90px #ffaa00, inset 0 0 60px #2a1000; filter: blur(6px) contrast(1.6); }
+}
+
+@keyframes portalSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.05); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+.portal-conteudo {
+    position: relative;
+    z-index: 2;
+    background: rgba(5, 11, 20, 0.9);
+    padding: 40px;
+    border: 2px solid #3a4b5c;
+    border-radius: 12px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    max-width: 450px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 0 30px rgba(100, 150, 255, 0.15);
+}
+
+.titulo-portal {
+    color: #c9e0f5;
+    letter-spacing: 3px;
+    font-size: 1.8rem;
+    text-shadow: 0 0 15px rgba(100, 150, 255, 0.5);
+    margin-bottom: 10px;
+}
+
+.input-viking {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #516b84;
+    color: #c9e0f5;
+    padding: 15px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.input-viking::placeholder {
+    color: #516b84;
+}
+
+.input-viking:focus {
+    border-color: #c9e0f5;
+    box-shadow: 0 0 15px rgba(100, 150, 255, 0.4);
+}
+
+select.input-viking {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+select.input-viking option {
+    background-color: #050b14;
+    color: #c9e0f5;
+    padding: 10px;
 }
 
 .poster {
@@ -226,6 +348,23 @@ h1 {
     border-bottom: none;
 }
 
+.esconder-conteudo {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s ease;
+}
+
+.portal-fogo {
+    visibility: visible !important;
+    animation: portalGlow 4s infinite alternate, portalSpin 25s linear infinite, explosaoPortal 5s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+}
+
+@keyframes explosaoPortal {
+    0% { transform: scale(1) rotate(0deg); opacity: 1; filter: blur(5px) contrast(1.4); }
+    50% { transform: scale(3) rotate(90deg); opacity: 1; filter: blur(3px) contrast(1.2); }
+    100% { transform: scale(30) rotate(180deg); opacity: 0; filter: blur(0px) contrast(1); }
+}
+
 @media (max-width: 600px) {
     .poster {
         padding: 30px 10px;
@@ -279,5 +418,18 @@ h1 {
         padding: 12px 10px;
         width: 100%;
         max-width: none;
+    }
+
+    .portal-conteudo {
+        padding: 30px 15px;
+    }
+
+    .titulo-portal {
+        font-size: 1.5rem;
+    }
+
+    .portal-anel {
+        width: 300px;
+        height: 300px;
     }
 }
