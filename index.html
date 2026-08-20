@@ -4,14 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valheim 1.0 — Contagem Regressiva</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <section id="tela-portal" class="tela-portal">
+        <div class="portal-anel"></div>
+        <div class="portal-conteudo">
+            <h2 class="titulo-portal">Atravessar para o Deep North</h2>
+            <input type="text" id="input-nick" class="input-viking" placeholder="Seu Nick (ex: @Odin)" autocomplete="off">
+            <select id="input-funcao" class="input-viking">
+                <option value="" disabled selected>Selecione sua Função na Base</option>
+                <option value="Construtor">Construtor</option>
+                <option value="Minerador">Minerador</option>
+                <option value="Fazendeiro">Fazendeiro</option>
+                <option value="Guerreiro">Guerreiro</option>
+                <option value="Explorador">Explorador</option>
+            </select>
+            <button id="btn-entrar" class="botao">GO VALHEIM</button>
+            <p id="erro-portal" class="status"></p>
+        </div>
+    </section>
+
     <div class="neve"></div>
     <div class="neblina"></div>
+    
 
     <audio id="audio-ambiente" loop>
         <source src="valheim-tema.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio-portal">
+        <source src="portal-som.mp3" type="audio/mpeg">
     </audio>
 
     <main class="poster">
@@ -66,27 +90,15 @@
     <div id="modal-players" class="modal-oculto">
         <div class="modal-conteudo">
             <span id="fechar-modal" class="fechar">&times;</span>
-            <h2>Viking Roster</h2>
+            <h2>Lista da Piazada</h2>
             <table class="tabela-players">
                 <thead>
                     <tr>
                         <th>Nick</th>
-                        <th>Função</th>
+                        <th>Função na Base</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>@SeuNickAqui</td>
-                        <td> EM TESTE </td>
-                    </tr>
-                    <tr>
-                        <td>@Amigo1</td>
-                        <td> EM TESTE </td>
-                    </tr>
-                    <tr>
-                        <td>@Amigo2</td>
-                        <td>EM TESTE</td>
-                    </tr>
+                <tbody id="tabela-corpo">
                 </tbody>
             </table>
         </div>
